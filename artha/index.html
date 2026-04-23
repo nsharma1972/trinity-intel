@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The ARTHA Framework™ — Trinity Bridge Professional Services</title>
+<meta name="description" content="ARTHA — a proprietary AI adoption methodology purpose-built for regulated industries. Five dimensions, scored, benchmarked, and continuously tracked.">
+<style>
+  :root {
+    --bg: #0e1016;
+    --panel: #15182199;
+    --text: #e8eaf0;
+    --muted: #8b91a5;
+    --border: #2a2f41;
+    --accent: #8fa5ff;
+    --green: #5ce27f;
+    --amber: #e2a95c;
+    --red: #e26060;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  header {
+    padding: 3rem 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .eyebrow { color: var(--muted); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .brand { font-weight: 700; font-size: 2.4rem; margin-top: 0.4rem; letter-spacing: -0.02em; }
+  .tagline { color: var(--muted); font-size: 1.05rem; margin-top: 0.5rem; max-width: 640px; }
+  .backlink { color: var(--muted); text-decoration: none; font-size: 0.88rem; }
+  .backlink:hover { color: var(--text); }
+  main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  section { margin: 3rem 0; }
+  h2 { font-size: 1.5rem; margin-bottom: 1rem; letter-spacing: -0.01em; }
+  h3 { font-size: 1.1rem; margin: 1.8rem 0 0.6rem; color: var(--accent); }
+  p { margin: 0.5rem 0 1rem; }
+  .lead { font-size: 1.15rem; color: var(--text); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--text); }
+  em { color: var(--muted); font-style: italic; }
+
+  .stat-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.8rem;
+    margin: 2rem 0;
+  }
+  .stat-number { font-size: 2rem; font-weight: 700; color: var(--amber); letter-spacing: -0.02em; }
+  .stat-caption { color: var(--muted); margin-top: 0.3rem; }
+
+  .dimensions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+  }
+  .dimension {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1rem;
+  }
+  .dim-letter {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.3rem;
+  }
+  .dim-label { font-weight: 600; margin-bottom: 0.2rem; }
+  .dim-sub { color: var(--muted); font-size: 0.88rem; line-height: 1.4; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  th { color: var(--muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  tr:last-child td { border-bottom: none; }
+
+  .maturity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.8rem;
+    margin: 1.2rem 0;
+  }
+  .level {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .level-name { font-weight: 600; margin-bottom: 0.3rem; }
+  .level-range { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+  .level-desc { color: var(--muted); font-size: 0.9rem; }
+  .level[data-tier="Pioneer"] { border-left-color: var(--green); }
+  .level[data-tier="Leading"] { border-left-color: var(--green); }
+  .level[data-tier="Unaware"] { border-left-color: var(--red); }
+
+  .sequence-visual {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  .sequence-visual .right { color: var(--green); }
+  .sequence-visual .wrong { color: var(--red); }
+
+  .pillbox {
+    display: inline-block;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.25rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-right: 0.4rem;
+    margin-top: 0.3rem;
+  }
+
+  .cta {
+    background: linear-gradient(135deg, #1a1d29 0%, #24283a 100%);
+    border: 1px solid #3d4663;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 3rem 0 1rem;
+    text-align: center;
+  }
+  .cta h2 { margin-top: 0; }
+  .cta a.button {
+    display: inline-block;
+    background: var(--accent);
+    color: #0e1016;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 0.5rem;
+  }
+  .cta a.button:hover { background: #a4b5ff; text-decoration: none; }
+
+  footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  blockquote {
+    margin: 1.5rem 0;
+    padding: 0.8rem 1.3rem;
+    border-left: 3px solid var(--accent);
+    color: var(--text);
+    font-style: italic;
+    background: var(--panel);
+    border-radius: 0 8px 8px 0;
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="backlink" href="https://portal.trinitybps.com/">← Trinity Portal</a>
+  <div class="eyebrow" style="margin-top: 1.2rem;">Methodology</div>
+  <div class="brand">The ARTHA Framework™</div>
+  <div class="tagline">A proprietary AI adoption methodology purpose-built for regulated industries. Five dimensions, scored, benchmarked, and continuously tracked.</div>
+</header>
+
+<main>
+
+<section>
+  <p class="lead">In Sanskrit, <em>Artha</em> means <strong>purpose, meaning, and value</strong> — one of the four fundamental goals of human pursuit. It is the recognition that prosperity is not accidental. It is built through deliberate, structured action.</p>
+  <p>That is exactly what regulated industry organizations need when they approach AI: not another generic "AI transformation" framework, but a deliberate, structured methodology that reveals exactly where they stand, what is blocking them, and the precise sequence of actions to move forward — compliantly, confidently, and with measurable results.</p>
+</section>
+
+<section>
+  <div class="stat-box">
+    <div class="stat-number">88% use AI. Only 6% capture meaningful value.</div>
+    <div class="stat-caption">In regulated industries, the gap is wider and the consequences of failure are higher: regulatory penalties, patient harm, financial losses, reputational damage.</div>
+  </div>
+  <p>The failure is never the AI itself. It is always one or more of five structural gaps — and ARTHA addresses all five, sequentially, measurably, and in the right order.</p>
+</section>
+
+<section>
+  <h2>The Five Dimensions</h2>
+  <div class="dimensions">
+    <div class="dimension">
+      <div class="dim-letter">A</div>
+      <div class="dim-label">Adoption</div>
+      <div class="dim-sub">People, culture, and AI readiness across the workforce and leadership.</div>
+    </div>
+    <div class="dimension">
+      <div class="dim-letter">R</div>
+      <div class="dim-label">Regulatory</div>
+      <div class="dim-sub">Compliance architecture — US state, federal, EU AI Act, sector-specific.</div>
+    </div>
+    <div class="dimension">
+      <div class="dim-letter">T</div>
+      <div class="dim-label">Technology</div>
+      <div class="dim-sub">Infrastructure and data foundation — the systems that support AI at scale.</div>
+    </div>
+    <div class="dimension">
+      <div class="dim-letter">H</div>
+      <div class="dim-label">Holistic</div>
+      <div class="dim-sub">Strategy and governance — board-level sponsorship, risk tiers, human-in-the-loop.</div>
+    </div>
+    <div class="dimension">
+      <div class="dim-letter">A</div>
+      <div class="dim-label">Accountability</div>
+      <div class="dim-sub">Measurement and value realization — ROI methodology, EBIT attribution, scaling gates.</div>
+    </div>
+  </div>
+  <p>Each dimension is assessed, scored, and addressed in a structured sequence. Organizations receive an <strong>ARTHA Score</strong> out of 100, benchmarked against their industry peer group.</p>
+</section>
+
+<section>
+  <h2>Maturity Levels</h2>
+  <p>Every organization maps to one of five maturity levels — across each dimension and overall.</p>
+  <div class="maturity-grid">
+    <div class="level" data-tier="Unaware">
+      <div class="level-name">Unaware</div>
+      <div class="level-range">0–25</div>
+      <div class="level-desc">AI adoption is ad hoc, ungoverned, and at high risk. Significant value destruction possible.</div>
+    </div>
+    <div class="level" data-tier="Aware">
+      <div class="level-name">Aware</div>
+      <div class="level-range">26–50</div>
+      <div class="level-desc">Awareness exists but no systematic foundation. Pilots are running but will not scale.</div>
+    </div>
+    <div class="level" data-tier="Structured">
+      <div class="level-name">Structured</div>
+      <div class="level-range">51–70</div>
+      <div class="level-desc">Systems in place but inconsistently applied. Value captured in pockets.</div>
+    </div>
+    <div class="level" data-tier="Leading">
+      <div class="level-name">Leading</div>
+      <div class="level-range">71–85</div>
+      <div class="level-desc">Enterprise-wide AI capability with measurable value. Pushing into agentic AI.</div>
+    </div>
+    <div class="level" data-tier="Pioneer">
+      <div class="level-name">Pioneer</div>
+      <div class="level-range">86–100</div>
+      <div class="level-desc">Benchmark organization. AI is a core competitive differentiator.</div>
+    </div>
+  </div>
+  <p><strong>Target:</strong> ARTHA Score ≥ 70 across all dimensions correlates strongly with the 6% of organizations that capture enterprise AI value.</p>
+</section>
+
+<section>
+  <h2>How ARTHA Is Applied</h2>
+
+  <h3>1. ARTHA Diagnostic Assessment</h3>
+  <p>A structured evaluation across all five dimensions. Combines quantitative scoring (weighted questions across governance, data, people, regulatory, and measurement), qualitative interviews (C-suite, department heads, frontline), document review (existing policies, governance docs, data architecture), and a technology audit (systems inventory, AI tools in use, shadow AI).</p>
+  <p><em>Output: ARTHA Score + Dimension Heatmap + Priority Gap Map.</em></p>
+
+  <h3>2. ARTHA Gap Analysis</h3>
+  <p>For each dimension scoring below the Structured tier, a structured root cause analysis identifies what is specifically missing, what the downstream consequences are, and what must be resolved before the next dimension can advance.</p>
+
+  <h3>3. ARTHA Roadmap</h3>
+  <p>A sequenced 36-month implementation plan, tied to business outcomes (not technology milestones), regulatory compliance deadlines, ROI capture targets, and workforce transformation checkpoints.</p>
+
+  <h3>4. ARTHA Quarterly Scorecard</h3>
+  <p>Ongoing quarterly re-measurement across all five dimensions with progress tracking against baseline, industry benchmark comparison, AI value realization tracking (EBIT impact), and regulatory compliance status.</p>
+</section>
+
+<section>
+  <h2>Why Order Matters</h2>
+  <p>Most AI consulting starts with technology. ARTHA starts with <strong>people and regulation</strong> — because those are the two most common failure points in regulated industries, and the two that take the longest to fix.</p>
+  <div class="sequence-visual">
+<span class="wrong">WRONG ORDER (why 42% abandon AI initiatives):</span>
+<br>Technology → Hope people follow → Discover regulatory problems → Scramble
+<br><br>
+<span class="right">ARTHA ORDER:</span>
+<br>Adoption → Regulatory → Technology → Holistic Governance → Accountability
+<br>    ↑                                                              ↑
+<br>Foundation                                                  Value Proof
+  </div>
+  <p>You cannot govern what your people don't understand. You cannot build on infrastructure that violates your regulations. You cannot measure what you haven't governed.</p>
+</section>
+
+<section>
+  <h2>What Makes ARTHA Different</h2>
+  <table>
+    <thead>
+      <tr><th>Generic AI Consulting</th><th>ARTHA Framework</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Technology-first</td><td>People-first, then technology</td></tr>
+      <tr><td>Industry-agnostic</td><td>Purpose-built for regulated industries</td></tr>
+      <tr><td>One-time engagement</td><td>Continuous measurement with quarterly scoring</td></tr>
+      <tr><td>Vague ROI claims</td><td>Specific EBIT attribution methodology</td></tr>
+      <tr><td>Advisory only</td><td>Methodology + platform + managed options</td></tr>
+      <tr><td>Framework borrowed from Big 4</td><td>Proprietary, owned, continuously updated</td></tr>
+      <tr><td>No regulatory intelligence</td><td>Embedded regulatory tracking (US states + EU AI Act)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <blockquote>"ARTHA is the only AI adoption methodology purpose-built for regulated industries — combining regulatory compliance architecture, governance design, workforce transformation, and ROI measurement into a single scored, benchmarked, and continuously tracked framework."</blockquote>
+</section>
+
+<section>
+  <h2>Supporting Tools — The Trinity Platform</h2>
+  <p>ARTHA is delivered through the <strong>PRISM</strong> platform — a suite of operator tools built around the framework:</p>
+  <div>
+    <span class="pillbox">ARTHA Diagnostic</span>
+    <span class="pillbox">Regulatory Radar</span>
+    <span class="pillbox">Governance Builder</span>
+    <span class="pillbox">Workforce Pulse</span>
+    <span class="pillbox">ROI Compass</span>
+    <span class="pillbox">Model Registry</span>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>See your organization's ARTHA Score</h2>
+  <p>Regulated industries that reach Structured or Leading across all five dimensions capture measurable enterprise AI value. Where does your organization stand today?</p>
+  <a class="button" href="https://trinitybps.com/contact" target="_blank" rel="noopener">Request a diagnostic</a>
+</section>
+
+</main>
+
+<footer>
+  ARTHA™ is a proprietary methodology of Trinity Bridge Professional Services.<br>
+  <a href="https://intel.trinitybps.com/regulatory/" style="color: var(--muted);">Regulatory Intel</a> ·
+  <a href="https://portal.trinitybps.com/" style="color: var(--muted);">Operator Portal</a> ·
+  <a href="https://trinitybps.com/" style="color: var(--muted);">trinitybps.com</a>
+</footer>
+
+</body>
+</html>

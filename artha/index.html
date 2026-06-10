@@ -180,6 +180,71 @@
     background: var(--panel);
     border-radius: 0 8px 8px 0;
   }
+
+  /* ── Radar chart ── */
+  .radar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0 1rem;
+  }
+  .radar-wrap svg { max-width: 420px; width: 100%; }
+  .radar-caption { color: var(--muted); font-size: 0.82rem; margin-top: 0.6rem; text-align: center; }
+
+  /* ── Maturity spectrum bar ── */
+  .maturity-bar-wrap { margin: 1.5rem 0 2rem; }
+  .maturity-bar-track {
+    position: relative;
+    height: 18px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #e26060 0%, #e2a95c 35%, #e2d45c 55%, #5ce27f 75%, #3ecf6a 100%);
+    margin-bottom: 0.5rem;
+  }
+  .maturity-bar-ticks {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0;
+    margin-bottom: 0.8rem;
+  }
+  .maturity-bar-ticks span { color: var(--muted); font-size: 0.78rem; }
+  .maturity-tier-labels {
+    display: flex;
+    margin-top: 0.4rem;
+  }
+  .mtl {
+    text-align: center;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.4rem;
+    border-radius: 6px;
+  }
+  .mtl .name { font-weight: 600; color: var(--text); }
+  .mtl .range { color: var(--muted); }
+  .mtl-unaware  { flex: 25; border-left: 2px solid #e26060; }
+  .mtl-aware    { flex: 25; border-left: 2px solid #e2a95c; }
+  .mtl-struct   { flex: 20; border-left: 2px solid #e2d45c; }
+  .mtl-leading  { flex: 15; border-left: 2px solid #5ce27f; }
+  .mtl-pioneer  { flex: 15; border-left: 2px solid #3ecf6a; }
+  .target-line {
+    position: absolute;
+    left: 70%;
+    top: -6px;
+    bottom: -6px;
+    width: 2px;
+    background: #fff;
+    border-radius: 2px;
+  }
+  .target-label {
+    position: absolute;
+    left: 71%;
+    top: -22px;
+    font-size: 0.72rem;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  /* ── Flow diagram ── */
+  .flow-wrap { margin: 1.5rem 0; }
+  .flow-wrap svg { width: 100%; max-width: 860px; display: block; margin: 0 auto; }
 </style>
 </head>
 <body>
@@ -235,36 +300,110 @@
     </div>
   </div>
   <p>Each dimension is assessed, scored, and addressed in a structured sequence. Organizations receive an <strong>ARTHA Score</strong> out of 100, benchmarked against their industry peer group.</p>
+
+  <div class="radar-wrap">
+    <svg viewBox="0 0 420 380" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ARTHA radar chart — illustrative scores across five dimensions">
+      <defs>
+        <radialGradient id="rg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8fa5ff" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#8fa5ff" stop-opacity="0.04"/>
+        </radialGradient>
+      </defs>
+      <!-- grid rings -->
+      <g stroke="#2a2f41" stroke-width="1">
+        <polygon points="210,90 307,148 307,264 210,322 113,264 113,148" />
+        <polygon points="210,122 284,163 284,243 210,284 136,243 136,163" />
+        <polygon points="210,154 261,178 261,222 210,246 159,222 159,178" />
+        <polygon points="210,186 238,193 238,201 210,208 182,201 182,193" />
+      </g>
+      <!-- axis spokes -->
+      <g stroke="#2a2f41" stroke-width="1">
+        <line x1="210" y1="206" x2="210" y2="90" />
+        <line x1="210" y1="206" x2="307" y2="148" />
+        <line x1="210" y1="206" x2="307" y2="264" />
+        <line x1="210" y1="206" x2="210" y2="322" />
+        <line x1="210" y1="206" x2="113" y2="264" />
+        <line x1="210" y1="206" x2="113" y2="148" />
+      </g>
+      <!-- industry avg polygon (muted) -->
+      <polygon points="210,132 281,167 279,250 210,296 148,251 144,164"
+               fill="none" stroke="#8b91a5" stroke-width="1.2" stroke-dasharray="5,3" opacity="0.6"/>
+      <!-- sample org score polygon -->
+      <polygon points="210,112 295,157 296,258 210,302 128,248 130,152"
+               fill="url(#rg)" stroke="#8fa5ff" stroke-width="2" />
+      <!-- data point dots -->
+      <g fill="#8fa5ff">
+        <circle cx="210" cy="112" r="5"/>
+        <circle cx="295" cy="157" r="5"/>
+        <circle cx="296" cy="258" r="5"/>
+        <circle cx="210" cy="302" r="5"/>
+        <circle cx="128" cy="248" r="5"/>
+        <circle cx="130" cy="152" r="5"/>
+      </g>
+      <!-- axis labels -->
+      <text x="210" y="76" text-anchor="middle" fill="#e8eaf0" font-size="13" font-weight="700" font-family="-apple-system,sans-serif">A</text>
+      <text x="210" y="89" text-anchor="middle" fill="#8b91a5" font-size="10" font-family="-apple-system,sans-serif">Adoption</text>
+      <text x="330" y="150" text-anchor="start" fill="#e8eaf0" font-size="13" font-weight="700" font-family="-apple-system,sans-serif">R</text>
+      <text x="330" y="162" text-anchor="start" fill="#8b91a5" font-size="10" font-family="-apple-system,sans-serif">Regulatory</text>
+      <text x="330" y="268" text-anchor="start" fill="#e8eaf0" font-size="13" font-weight="700" font-family="-apple-system,sans-serif">T</text>
+      <text x="330" y="280" text-anchor="start" fill="#8b91a5" font-size="10" font-family="-apple-system,sans-serif">Technology</text>
+      <text x="210" y="342" text-anchor="middle" fill="#e8eaf0" font-size="13" font-weight="700" font-family="-apple-system,sans-serif">H</text>
+      <text x="210" y="355" text-anchor="middle" fill="#8b91a5" font-size="10" font-family="-apple-system,sans-serif">Holistic</text>
+      <text x="88" y="268" text-anchor="end" fill="#e8eaf0" font-size="13" font-weight="700" font-family="-apple-system,sans-serif">A</text>
+      <text x="88" y="280" text-anchor="end" fill="#8b91a5" font-size="10" font-family="-apple-system,sans-serif">Accountability</text>
+      <!-- legend -->
+      <line x1="20" y1="22" x2="44" y2="22" stroke="#8fa5ff" stroke-width="2"/>
+      <circle cx="32" cy="22" r="3" fill="#8fa5ff"/>
+      <text x="50" y="26" fill="#8b91a5" font-size="10" font-family="-apple-system,sans-serif">Your organization</text>
+      <line x1="20" y1="38" x2="44" y2="38" stroke="#8b91a5" stroke-width="1.2" stroke-dasharray="5,3"/>
+      <text x="50" y="42" fill="#8b91a5" font-size="10" font-family="-apple-system,sans-serif">Industry average</text>
+      <!-- ring labels -->
+      <text x="213" y="188" fill="#8b91a5" font-size="9" font-family="-apple-system,sans-serif">25</text>
+      <text x="213" y="157" fill="#8b91a5" font-size="9" font-family="-apple-system,sans-serif">50</text>
+      <text x="213" y="126" fill="#8b91a5" font-size="9" font-family="-apple-system,sans-serif">75</text>
+      <text x="213" y="96" fill="#8b91a5" font-size="9" font-family="-apple-system,sans-serif">100</text>
+    </svg>
+    <div class="radar-caption">Illustrative ARTHA score across all five dimensions vs. industry average. Your diagnostic produces this chart with real data.</div>
+  </div>
 </section>
 
 <section>
   <h2>Maturity Levels</h2>
   <p>Every organization maps to one of five maturity levels — across each dimension and overall.</p>
-  <div class="maturity-grid">
-    <div class="level" data-tier="Unaware">
-      <div class="level-name">Unaware</div>
-      <div class="level-range">0–25</div>
-      <div class="level-desc">AI adoption is ad hoc, ungoverned, and at high risk. Significant value destruction possible.</div>
+  <div class="maturity-bar-wrap">
+    <div class="maturity-bar-track">
+      <div class="target-label">≥70 target</div>
+      <div class="target-line"></div>
     </div>
-    <div class="level" data-tier="Aware">
-      <div class="level-name">Aware</div>
-      <div class="level-range">26–50</div>
-      <div class="level-desc">Awareness exists but no systematic foundation. Pilots are running but will not scale.</div>
+    <div class="maturity-bar-ticks">
+      <span>0</span><span>25</span><span>50</span><span>70</span><span>85</span><span>100</span>
     </div>
-    <div class="level" data-tier="Structured">
-      <div class="level-name">Structured</div>
-      <div class="level-range">51–70</div>
-      <div class="level-desc">Systems in place but inconsistently applied. Value captured in pockets.</div>
-    </div>
-    <div class="level" data-tier="Leading">
-      <div class="level-name">Leading</div>
-      <div class="level-range">71–85</div>
-      <div class="level-desc">Enterprise-wide AI capability with measurable value. Pushing into agentic AI.</div>
-    </div>
-    <div class="level" data-tier="Pioneer">
-      <div class="level-name">Pioneer</div>
-      <div class="level-range">86–100</div>
-      <div class="level-desc">Benchmark organization. AI is a core competitive differentiator.</div>
+    <div class="maturity-tier-labels">
+      <div class="mtl mtl-unaware">
+        <div class="name">Unaware</div>
+        <div class="range">0–25</div>
+        <div class="level-desc" style="font-size:0.78rem;color:var(--muted);margin-top:0.3rem;">Ad hoc, ungoverned. High risk of value destruction.</div>
+      </div>
+      <div class="mtl mtl-aware">
+        <div class="name">Aware</div>
+        <div class="range">26–50</div>
+        <div class="level-desc" style="font-size:0.78rem;color:var(--muted);margin-top:0.3rem;">Pilots running but won't scale. No systematic foundation.</div>
+      </div>
+      <div class="mtl mtl-struct">
+        <div class="name">Structured</div>
+        <div class="range">51–70</div>
+        <div class="level-desc" style="font-size:0.78rem;color:var(--muted);margin-top:0.3rem;">Systems exist, inconsistently applied. Value in pockets.</div>
+      </div>
+      <div class="mtl mtl-leading">
+        <div class="name">Leading</div>
+        <div class="range">71–85</div>
+        <div class="level-desc" style="font-size:0.78rem;color:var(--muted);margin-top:0.3rem;">Enterprise-wide capability. Pushing into agentic AI.</div>
+      </div>
+      <div class="mtl mtl-pioneer">
+        <div class="name">Pioneer</div>
+        <div class="range">86–100</div>
+        <div class="level-desc" style="font-size:0.78rem;color:var(--muted);margin-top:0.3rem;">AI is a core competitive differentiator.</div>
+      </div>
     </div>
   </div>
   <p><strong>Target:</strong> ARTHA Score ≥ 70 across all dimensions correlates strongly with the 6% of organizations that capture enterprise AI value.</p>
@@ -290,14 +429,65 @@
 <section>
   <h2>Why Order Matters</h2>
   <p>Most AI consulting starts with technology. ARTHA starts with <strong>people and regulation</strong> — because those are the two most common failure points in regulated industries, and the two that take the longest to fix.</p>
-  <div class="sequence-visual">
-<span class="wrong">WRONG ORDER (why 42% abandon AI initiatives):</span>
-<br>Technology → Hope people follow → Discover regulatory problems → Scramble
-<br><br>
-<span class="right">ARTHA ORDER:</span>
-<br>Adoption → Regulatory → Technology → Holistic Governance → Accountability
-<br>    ↑                                                              ↑
-<br>Foundation                                                  Value Proof
+  <div class="flow-wrap">
+    <svg viewBox="0 0 860 220" xmlns="http://www.w3.org/2000/svg" aria-label="ARTHA order vs wrong order flow diagram">
+      <defs>
+        <marker id="arr-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#e26060"/>
+        </marker>
+        <marker id="arr-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#5ce27f"/>
+        </marker>
+      </defs>
+
+      <!-- WRONG ORDER row -->
+      <text x="0" y="18" fill="#e26060" font-size="11" font-weight="600" font-family="-apple-system,sans-serif">WRONG ORDER — why 42% abandon AI initiatives</text>
+      <!-- boxes -->
+      <rect x="0"   y="26" width="130" height="36" rx="7" fill="#2a1a1a" stroke="#e26060" stroke-width="1.3"/>
+      <text x="65"  y="49" text-anchor="middle" fill="#e26060" font-size="11" font-weight="600" font-family="-apple-system,sans-serif">Technology</text>
+      <rect x="172" y="26" width="160" height="36" rx="7" fill="#2a1a1a" stroke="#e26060" stroke-width="1.3"/>
+      <text x="252" y="49" text-anchor="middle" fill="#e26060" font-size="11" font-weight="600" font-family="-apple-system,sans-serif">Hope people follow</text>
+      <rect x="378" y="26" width="200" height="36" rx="7" fill="#2a1a1a" stroke="#e26060" stroke-width="1.3"/>
+      <text x="478" y="49" text-anchor="middle" fill="#e26060" font-size="11" font-weight="600" font-family="-apple-system,sans-serif">Discover regulatory problems</text>
+      <rect x="626" y="26" width="110" height="36" rx="7" fill="#2a1a1a" stroke="#e26060" stroke-width="1.3"/>
+      <text x="681" y="49" text-anchor="middle" fill="#e26060" font-size="11" font-weight="600" font-family="-apple-system,sans-serif">Scramble</text>
+      <!-- arrows -->
+      <line x1="130" y1="44" x2="168" y2="44" stroke="#e26060" stroke-width="1.5" marker-end="url(#arr-red)"/>
+      <line x1="332" y1="44" x2="374" y2="44" stroke="#e26060" stroke-width="1.5" marker-end="url(#arr-red)"/>
+      <line x1="578" y1="44" x2="622" y2="44" stroke="#e26060" stroke-width="1.5" marker-end="url(#arr-red)"/>
+
+      <!-- ARTHA ORDER row -->
+      <text x="0" y="106" fill="#5ce27f" font-size="11" font-weight="600" font-family="-apple-system,sans-serif">ARTHA ORDER</text>
+      <!-- boxes -->
+      <rect x="0"   y="114" width="110" height="44" rx="7" fill="#0e1a14" stroke="#5ce27f" stroke-width="1.5"/>
+      <text x="55"  y="133" text-anchor="middle" fill="#5ce27f" font-size="11" font-weight="700" font-family="-apple-system,sans-serif">Adoption</text>
+      <text x="55"  y="148" text-anchor="middle" fill="#8b91a5" font-size="9" font-family="-apple-system,sans-serif">Foundation</text>
+
+      <rect x="162" y="114" width="110" height="44" rx="7" fill="#0e1a14" stroke="#5ce27f" stroke-width="1.5"/>
+      <text x="217" y="133" text-anchor="middle" fill="#5ce27f" font-size="11" font-weight="700" font-family="-apple-system,sans-serif">Regulatory</text>
+      <text x="217" y="148" text-anchor="middle" fill="#8b91a5" font-size="9" font-family="-apple-system,sans-serif">Compliance gate</text>
+
+      <rect x="324" y="114" width="110" height="44" rx="7" fill="#0e1a14" stroke="#5ce27f" stroke-width="1.5"/>
+      <text x="379" y="133" text-anchor="middle" fill="#5ce27f" font-size="11" font-weight="700" font-family="-apple-system,sans-serif">Technology</text>
+      <text x="379" y="148" text-anchor="middle" fill="#8b91a5" font-size="9" font-family="-apple-system,sans-serif">Infrastructure</text>
+
+      <rect x="486" y="114" width="130" height="44" rx="7" fill="#0e1a14" stroke="#5ce27f" stroke-width="1.5"/>
+      <text x="551" y="133" text-anchor="middle" fill="#5ce27f" font-size="11" font-weight="700" font-family="-apple-system,sans-serif">Holistic Gov.</text>
+      <text x="551" y="148" text-anchor="middle" fill="#8b91a5" font-size="9" font-family="-apple-system,sans-serif">Governance</text>
+
+      <rect x="668" y="114" width="130" height="44" rx="7" fill="#0e1a14" stroke="#5ce27f" stroke-width="1.5"/>
+      <text x="733" y="133" text-anchor="middle" fill="#5ce27f" font-size="11" font-weight="700" font-family="-apple-system,sans-serif">Accountability</text>
+      <text x="733" y="148" text-anchor="middle" fill="#8b91a5" font-size="9" font-family="-apple-system,sans-serif">Value proof</text>
+
+      <!-- arrows -->
+      <line x1="110" y1="136" x2="158" y2="136" stroke="#5ce27f" stroke-width="1.5" marker-end="url(#arr-green)"/>
+      <line x1="272" y1="136" x2="320" y2="136" stroke="#5ce27f" stroke-width="1.5" marker-end="url(#arr-green)"/>
+      <line x1="434" y1="136" x2="482" y2="136" stroke="#5ce27f" stroke-width="1.5" marker-end="url(#arr-green)"/>
+      <line x1="616" y1="136" x2="664" y2="136" stroke="#5ce27f" stroke-width="1.5" marker-end="url(#arr-green)"/>
+
+      <!-- score label -->
+      <text x="0" y="200" fill="#8b91a5" font-size="10" font-family="-apple-system,sans-serif">You cannot govern what your people don't understand. You cannot build on infrastructure that violates your regulations.</text>
+    </svg>
   </div>
   <p>You cannot govern what your people don't understand. You cannot build on infrastructure that violates your regulations. You cannot measure what you haven't governed.</p>
 </section>

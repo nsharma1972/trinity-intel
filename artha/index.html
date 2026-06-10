@@ -245,6 +245,173 @@
   /* ── Flow diagram ── */
   .flow-wrap { margin: 1.5rem 0; }
   .flow-wrap svg { width: 100%; max-width: 860px; display: block; margin: 0 auto; }
+
+  /* ── Dimension deep-dive ── */
+  .dim-detail {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .dim-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .dim-badge {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .dim-badge.adoption     { background: #1a1e2e; color: #8fa5ff; border: 1px solid #8fa5ff44; }
+  .dim-badge.regulatory   { background: #1a1e1a; color: #5ce27f; border: 1px solid #5ce27f44; }
+  .dim-badge.technology   { background: #1e1a14; color: #e2a95c; border: 1px solid #e2a95c44; }
+  .dim-badge.holistic     { background: #1a1420; color: #c084fc; border: 1px solid #c084fc44; }
+  .dim-badge.accountability { background: #14191e; color: #38bdf8; border: 1px solid #38bdf844; }
+  .dim-detail-title { font-size: 1.1rem; font-weight: 700; }
+  .dim-detail-sub   { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
+  .subdim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.6rem;
+    margin: 0.8rem 0;
+  }
+  .subdim {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .subdim-name { font-weight: 600; font-size: 0.88rem; margin-bottom: 0.25rem; }
+  .subdim-desc { color: var(--muted); font-size: 0.82rem; line-height: 1.45; }
+  .spectrum-row {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+  }
+  .spectrum-low, .spectrum-high {
+    flex: 1;
+    padding: 0.6rem 0.8rem;
+    border-radius: 7px;
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+  .spectrum-low  { background: #1f1414; border: 1px solid #4a2020; color: #e26060; }
+  .spectrum-high { background: #0f1a14; border: 1px solid #1a4a28; color: #5ce27f; }
+  .spectrum-low  strong, .spectrum-high strong { display: block; margin-bottom: 0.25rem; font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* ── Scoring method ── */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.7rem;
+    margin: 1.2rem 0;
+  }
+  .score-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    text-align: center;
+  }
+  .score-card .sc-val { font-size: 1.8rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
+  .score-card .sc-label { color: var(--muted); font-size: 0.82rem; margin-top: 0.3rem; }
+  .formula-box {
+    background: #10131a;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin: 1rem 0;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.95rem;
+    line-height: 1.9;
+  }
+  .formula-box .comment { color: var(--muted); }
+  .formula-box .val { color: var(--amber); }
+  .formula-box .op { color: var(--accent); }
+
+  /* ── Red flags ── */
+  .redflag-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.8rem;
+    margin: 1.2rem 0;
+  }
+  .redflag {
+    background: #1a1212;
+    border: 1px solid #4a2020;
+    border-left: 3px solid var(--red);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+  }
+  .redflag-id { font-size: 0.75rem; font-weight: 700; color: var(--red); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .redflag-name { font-weight: 700; margin-bottom: 0.4rem; font-size: 0.95rem; }
+  .redflag-condition { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.5rem; line-height: 1.5; }
+  .redflag-impact { color: var(--red); font-size: 0.82rem; }
+
+  /* ── Industry context ── */
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.8rem;
+    margin: 1.2rem 0;
+  }
+  .industry-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1.3rem;
+  }
+  .industry-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .industry-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; }
+  .industry-regs { color: var(--amber); font-size: 0.8rem; font-weight: 600; margin-bottom: 0.6rem; }
+  .industry-challenge { color: var(--muted); font-size: 0.88rem; line-height: 1.55; margin-bottom: 0.6rem; }
+  .industry-hardest { font-size: 0.82rem; }
+  .industry-hardest span { color: var(--red); }
+
+  /* ── Engagement timeline ── */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin: 1.5rem 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-step {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .tl-step::before {
+    content: '';
+    position: absolute;
+    left: -1.7rem; top: 5px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .tl-label { font-size: 0.75rem; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .tl-title { font-weight: 700; margin-bottom: 0.3rem; }
+  .tl-desc  { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+  .tl-deliverable {
+    display: inline-block;
+    background: #1a1e2e;
+    border: 1px solid #2a3050;
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.78rem;
+    color: var(--accent);
+    margin-top: 0.4rem;
+  }
 </style>
 </head>
 <body>
@@ -525,6 +692,368 @@
     <span class="pillbox">ROI Compass</span>
     <span class="pillbox">Model Registry</span>
   </div>
+</section>
+
+<section>
+  <h2>What Each Dimension Actually Measures</h2>
+  <p>Each dimension is assessed across 12 structured questions scored 0–3. Below is the full sub-dimension breakdown — what ARTHA is specifically looking for inside each area.</p>
+
+  <div class="dim-detail">
+    <div class="dim-detail-header">
+      <div class="dim-badge adoption">A</div>
+      <div>
+        <div class="dim-detail-title">Adoption — People, Culture &amp; AI Readiness</div>
+        <div class="dim-detail-sub">The dimension most organizations underestimate and most consulting firms skip entirely.</div>
+      </div>
+    </div>
+    <div class="subdim-grid">
+      <div class="subdim">
+        <div class="subdim-name">Leadership AI Literacy</div>
+        <div class="subdim-desc">Can the C-suite articulate what AI can and cannot do in their specific regulatory context? Does the board ask the right questions?</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Workforce Change Readiness</div>
+        <div class="subdim-desc">Structured change management plans in place. Employee communication cadence. Fear vs. curiosity ratio in workforce sentiment.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">AI Skills Inventory</div>
+        <div class="subdim-desc">Current skills mapped against required capability. Training roadmap exists and is funded. Shadow AI usage tracked.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Cultural Experimentation</div>
+        <div class="subdim-desc">Does the organization run structured AI pilots? Is failure treated as learning? Are cross-functional AI teams empowered?</div>
+      </div>
+    </div>
+    <div class="spectrum-row">
+      <div class="spectrum-low"><strong>Score 0–25 looks like:</strong>Leadership references "AI strategy" in presentations but has no working knowledge. Employees fear job displacement. No formal training. Multiple unsanctioned AI tools in use.</div>
+      <div class="spectrum-high"><strong>Score 76–100 looks like:</strong>Every department head can name 3 AI use cases in their domain. Active communities of practice. Structured reskilling with career pathways. Shadow AI inventory and governance.</div>
+    </div>
+  </div>
+
+  <div class="dim-detail">
+    <div class="dim-detail-header">
+      <div class="dim-badge regulatory">R</div>
+      <div>
+        <div class="dim-detail-title">Regulatory — Compliance Architecture</div>
+        <div class="dim-detail-sub">The dimension that creates the highest-consequence failures. Non-compliance in regulated industries is not a cost — it is an existential event.</div>
+      </div>
+    </div>
+    <div class="subdim-grid">
+      <div class="subdim">
+        <div class="subdim-name">Regulatory Landscape Mapping</div>
+        <div class="subdim-desc">US federal + state + EU AI Act obligations mapped to specific AI use cases. Obligations prioritized by deadline and penalty severity.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">AI-Specific Compliance Controls</div>
+        <div class="subdim-desc">Model documentation, bias testing, explainability requirements, audit trails, and human-in-the-loop checkpoints for high-stakes decisions.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Data Privacy &amp; Consent Architecture</div>
+        <div class="subdim-desc">Training data provenance. Patient/customer consent for AI use. Cross-border data transfer compliance for AI model APIs.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Third-Party AI Vendor Governance</div>
+        <div class="subdim-desc">Vendor contracts establish liability and compliance responsibility. AI vendor risk assessments. SLAs cover compliance incidents.</div>
+      </div>
+    </div>
+    <div class="spectrum-row">
+      <div class="spectrum-low"><strong>Score 0–25 looks like:</strong>Legal has reviewed one vendor contract. No AI-specific compliance framework. No one knows which HIPAA/FCRA/NYDFS rules apply to the AI tools already deployed. EU AI Act not mapped.</div>
+      <div class="spectrum-high"><strong>Score 76–100 looks like:</strong>Regulatory change management process active. Each AI use case has a documented compliance assessment. Audit-ready AI model registry. Legal + compliance embedded in AI project teams.</div>
+    </div>
+  </div>
+
+  <div class="dim-detail">
+    <div class="dim-detail-header">
+      <div class="dim-badge technology">T</div>
+      <div>
+        <div class="dim-detail-title">Technology — Infrastructure &amp; Data Foundation</div>
+        <div class="dim-detail-sub">AI is only as strong as the data it runs on. Most organizations discover their data problems during AI deployment — not before it.</div>
+      </div>
+    </div>
+    <div class="subdim-grid">
+      <div class="subdim">
+        <div class="subdim-name">Data Quality &amp; Lineage</div>
+        <div class="subdim-desc">Data quality scores exist and are tracked. Data lineage is documented. Golden records defined for high-stakes AI inputs (patient, customer, transaction).</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">AI Infrastructure Readiness</div>
+        <div class="subdim-desc">Compute capacity for model inference. MLOps tooling in place. Model versioning, monitoring, and rollback capability.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Integration Architecture</div>
+        <div class="subdim-desc">AI outputs can reach the systems that need them (EHR, core banking, claims). APIs are documented, stable, and auditable.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Security Architecture for AI</div>
+        <div class="subdim-desc">Prompt injection controls. Model output filtering. Data access controls specific to AI pipelines. Adversarial attack surface assessed.</div>
+      </div>
+    </div>
+    <div class="spectrum-row">
+      <div class="spectrum-low"><strong>Score 0–25 looks like:</strong>Data in silos with no cross-system identifiers. No data quality metrics. Cloud infrastructure exists but is not AI-workload-ready. No ML monitoring in place.</div>
+      <div class="spectrum-high"><strong>Score 76–100 looks like:</strong>Unified data platform with documented quality SLAs. AI-ready integration layer. Model cards for every deployed model. Automated drift detection with alert routing to compliance.</div>
+    </div>
+  </div>
+
+  <div class="dim-detail">
+    <div class="dim-detail-header">
+      <div class="dim-badge holistic">H</div>
+      <div>
+        <div class="dim-detail-title">Holistic — Strategy &amp; Governance</div>
+        <div class="dim-detail-sub">AI governance is not a policy document. It is an operating system — the rules by which every AI decision in the organization gets made, reviewed, and corrected.</div>
+      </div>
+    </div>
+    <div class="subdim-grid">
+      <div class="subdim">
+        <div class="subdim-name">AI Strategy &amp; Portfolio</div>
+        <div class="subdim-desc">Board-approved AI strategy. Use case portfolio prioritized by impact vs. compliance risk. Resource allocation aligned to strategy.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">AI Ethics &amp; Risk Tiering</div>
+        <div class="subdim-desc">AI use cases classified by risk tier. Ethics review process for Tier 1 (high-risk) uses. Prohibited uses defined in policy.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Human-in-the-Loop Design</div>
+        <div class="subdim-desc">All high-stakes AI outputs have defined human override mechanisms. Escalation procedures exist and are tested. Override logging.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Cross-Functional Governance Structure</div>
+        <div class="subdim-desc">AI governance committee with defined charter, meeting cadence, and decision authority. IT, legal, compliance, and business all represented.</div>
+      </div>
+    </div>
+    <div class="spectrum-row">
+      <div class="spectrum-low"><strong>Score 0–25 looks like:</strong>AI decisions made in IT or by individual department heads. No governance committee. No risk classification. Ethics is a PR statement, not an operating process.</div>
+      <div class="spectrum-high"><strong>Score 76–100 looks like:</strong>Functioning AI governance board with escalation authority. Published AI principles that are operationalized. Quarterly risk register review. Every Tier 1 use case has a human appeal mechanism.</div>
+    </div>
+  </div>
+
+  <div class="dim-detail">
+    <div class="dim-detail-header">
+      <div class="dim-badge accountability">A</div>
+      <div>
+        <div class="dim-detail-title">Accountability — Measurement &amp; Value Realization</div>
+        <div class="dim-detail-sub">If you cannot measure AI's contribution to EBIT, you cannot defend the investment — and you cannot scale what you cannot justify.</div>
+      </div>
+    </div>
+    <div class="subdim-grid">
+      <div class="subdim">
+        <div class="subdim-name">ROI Methodology</div>
+        <div class="subdim-desc">Defined metrics for each AI use case. Baseline measurements taken before deployment. Attribution methodology separates AI contribution from other factors.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Value Realization Tracking</div>
+        <div class="subdim-desc">Executive dashboards showing AI ROI. Business case owners accountable for outcomes. Underperforming AI investments reviewed and reallocated.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Scaling Gates</div>
+        <div class="subdim-desc">Clear criteria for when an AI pilot moves to enterprise deployment. Scaling decisions based on measured outcomes, not internal enthusiasm.</div>
+      </div>
+      <div class="subdim">
+        <div class="subdim-name">Audit &amp; Reporting</div>
+        <div class="subdim-desc">AI performance reports generated for board, regulators, and business owners. Negative outcomes documented and learned from. External audit capability.</div>
+      </div>
+    </div>
+    <div class="spectrum-row">
+      <div class="spectrum-low"><strong>Score 0–25 looks like:</strong>ROI tracked by headcount savings only. No pre-deployment baselines. "AI is working great" is based on anecdote. No one knows the actual cost per AI outcome.</div>
+      <div class="spectrum-high"><strong>Score 76–100 looks like:</strong>EBIT-attributed AI value tracked per use case. Scaling gates enforced. Underperforming use cases retired. Annual external AI performance audit.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>The Scoring Methodology</h2>
+  <p>ARTHA uses a rigorous, transparent scoring system. Every score is reproducible from the same inputs — no subjective weighting, no consultant discretion in the calculation.</p>
+
+  <div class="score-grid">
+    <div class="score-card">
+      <div class="sc-val">60</div>
+      <div class="sc-label">Total assessment questions</div>
+    </div>
+    <div class="score-card">
+      <div class="sc-val">12</div>
+      <div class="sc-label">Questions per dimension</div>
+    </div>
+    <div class="score-card">
+      <div class="sc-val">0–3</div>
+      <div class="sc-label">Response scale per question</div>
+    </div>
+    <div class="score-card">
+      <div class="sc-val">36</div>
+      <div class="sc-label">Maximum raw score per dimension</div>
+    </div>
+    <div class="score-card">
+      <div class="sc-val">0–100</div>
+      <div class="sc-label">Normalized dimension score</div>
+    </div>
+    <div class="score-card">
+      <div class="sc-val">±15%</div>
+      <div class="sc-label">Industry weight adjustment range</div>
+    </div>
+  </div>
+
+  <h3>Response Scale</h3>
+  <table>
+    <thead><tr><th>Score</th><th>Meaning</th><th>Evidence required</th></tr></thead>
+    <tbody>
+      <tr><td><strong>0 — Absent</strong></td><td>No capability, policy, or process exists</td><td>Self-report sufficient</td></tr>
+      <tr><td><strong>1 — Informal</strong></td><td>Exists but is undocumented or inconsistently applied</td><td>Examples or anecdotes</td></tr>
+      <tr><td><strong>2 — Defined</strong></td><td>Documented, consistently applied in most cases</td><td>Policy or process document</td></tr>
+      <tr><td><strong>3 — Optimized</strong></td><td>Measured, continuously improved, industry-leading</td><td>Metrics, audit results, or benchmarks</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Normalization Formula</h3>
+  <div class="formula-box">
+    <span class="comment">// Step 1: Raw score per dimension (sum of 12 questions, 0–36)</span><br>
+    raw_A = Σ(Q1..Q12)  <span class="comment">// Adoption raw score</span><br><br>
+    <span class="comment">// Step 2: Normalize to 0–100</span><br>
+    dim_score_A = <span class="op">(</span>raw_A <span class="op">/</span> <span class="val">36</span><span class="op">)</span> <span class="op">×</span> <span class="val">100</span><br><br>
+    <span class="comment">// Step 3: Apply industry weight</span><br>
+    <span class="comment">// (Healthcare weights R higher; Financial Services weights H higher)</span><br>
+    weighted_A = dim_score_A <span class="op">×</span> industry_weight_A<br><br>
+    <span class="comment">// Step 4: Composite ARTHA Score</span><br>
+    ARTHA_Score = <span class="op">Σ</span>(weighted_A + weighted_R + weighted_T + weighted_H + weighted_A₂) <span class="op">/</span> <span class="val">Σ</span>(weights)
+  </div>
+
+  <h3>Industry Weighting</h3>
+  <p>Not all dimensions carry equal stakes across industries. ARTHA adjusts weights to reflect where failure is costliest in each regulated sector:</p>
+  <table>
+    <thead><tr><th>Industry</th><th>A</th><th>R</th><th>T</th><th>H</th><th>A₂</th><th>Primary concern</th></tr></thead>
+    <tbody>
+      <tr><td>Healthcare / Life Sciences</td><td>1.0×</td><td><strong>1.4×</strong></td><td>1.1×</td><td>1.2×</td><td>1.0×</td><td>Patient harm + HIPAA</td></tr>
+      <tr><td>Financial Services / Banking</td><td>1.0×</td><td>1.2×</td><td>1.1×</td><td><strong>1.4×</strong></td><td>1.2×</td><td>Fair lending + model risk</td></tr>
+      <tr><td>Insurance</td><td>1.0×</td><td><strong>1.3×</strong></td><td>1.0×</td><td>1.3×</td><td>1.1×</td><td>Rate filing + claims fairness</td></tr>
+      <tr><td>Pharmaceutical</td><td>1.1×</td><td><strong>1.5×</strong></td><td>1.2×</td><td>1.1×</td><td>1.0×</td><td>FDA validation + GxP</td></tr>
+      <tr><td>Government / Public Sector</td><td>1.2×</td><td>1.2×</td><td>1.0×</td><td><strong>1.4×</strong></td><td>1.0×</td><td>Fairness + public accountability</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Critical Red Flags</h2>
+  <p>ARTHA identifies four patterns that, when present, indicate an organization is at high risk of a compliance incident, AI initiative failure, or both — regardless of overall score. These are elevated immediately to leadership.</p>
+  <div class="redflag-grid">
+    <div class="redflag">
+      <div class="redflag-id">RF-001 — Adoption–Regulatory Inversion</div>
+      <div class="redflag-name">Technology deployed before people or compliance are ready</div>
+      <div class="redflag-condition">Technology score ≥ 60 while Adoption score &lt; 40 AND Regulatory score &lt; 50. Common in organizations that let IT drive AI strategy without HR or legal at the table.</div>
+      <div class="redflag-impact">Impact: Low adoption rates, compliance incidents, forced rollbacks. Average cost of remediation: 2–4× original implementation cost.</div>
+    </div>
+    <div class="redflag">
+      <div class="redflag-id">RF-002 — Governance Vacuum</div>
+      <div class="redflag-name">AI in production with no governance structure</div>
+      <div class="redflag-condition">Holistic score &lt; 35 with any other dimension ≥ 55. AI tools are live and producing outputs that affect customers, patients, or financial decisions — but no one owns the outcomes.</div>
+      <div class="redflag-impact">Impact: When an AI decision causes harm, there is no accountability structure. Regulatory exposure is maximum. Personal liability risk for executives.</div>
+    </div>
+    <div class="redflag">
+      <div class="redflag-id">RF-003 — Shadow AI Proliferation</div>
+      <div class="redflag-name">Untracked AI tool use across the organization</div>
+      <div class="redflag-condition">Adoption score &lt; 40 with Technology score between 30–60. Multiple departments are using consumer AI tools (ChatGPT, Copilot, etc.) for work involving regulated data — without disclosure, policy, or controls.</div>
+      <div class="redflag-impact">Impact: Immediate data privacy exposure. Patient/customer PII leaving the regulatory perimeter. Undiscoverable in an audit.</div>
+    </div>
+    <div class="redflag">
+      <div class="redflag-id">RF-004 — Value Measurement Blind Spot</div>
+      <div class="redflag-name">No attribution methodology for AI ROI</div>
+      <div class="redflag-condition">Accountability score &lt; 30 with any other dimension ≥ 55. Significant AI investment is live but there is no methodology to attribute financial outcomes — making next-year budget defense impossible and scaling decisions arbitrary.</div>
+      <div class="redflag-impact">Impact: AI investments will be cut in the next budget cycle regardless of actual performance. Scaling decisions are made on enthusiasm, not evidence.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>ARTHA in Regulated Industries</h2>
+  <p>The framework is calibrated for sectors where AI failures carry institutional, regulatory, or patient-harm consequences — not just competitive disadvantage.</p>
+
+  <div class="industry-grid">
+    <div class="industry-card">
+      <div class="industry-icon">🏥</div>
+      <div class="industry-name">Healthcare &amp; Life Sciences</div>
+      <div class="industry-regs">HIPAA · ONC 21st Century Cures · FDA AI/ML · EU AI Act Article 22</div>
+      <div class="industry-challenge">AI in clinical decision support, prior authorization, and revenue cycle creates direct patient harm and regulatory exposure when deployed without a complete compliance architecture. The FDA's evolving framework for AI-based Software as a Medical Device (SaMD) is largely unaddressed in most healthcare AI programs.</div>
+      <div class="industry-hardest">Hardest dimension: <span>Regulatory</span> — FDA, OCR, and state AG oversight simultaneously.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">🏦</div>
+      <div class="industry-name">Financial Services &amp; Banking</div>
+      <div class="industry-regs">ECOA · Fair Housing Act · FCRA · SR 11-7 (OCC) · NYDFS Part 500</div>
+      <div class="industry-challenge">Model risk management (SR 11-7) requires documentation, validation, and ongoing monitoring for every model used in credit, pricing, and fraud detection. AI amplifies both the scale of benefit and the scale of discriminatory harm. Explainability for adverse action notices is non-negotiable and technically demanding.</div>
+      <div class="industry-hardest">Hardest dimension: <span>Holistic</span> — governance must satisfy multiple regulators simultaneously.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">🛡️</div>
+      <div class="industry-name">Insurance</div>
+      <div class="industry-regs">State insurance regulations · NAIC Model Bulletin · Colorado SB 21-169</div>
+      <div class="industry-challenge">AI in underwriting, rating, and claims carries state-specific regulatory exposure — each state has different rules for algorithm transparency and anti-discrimination. Rate filing requirements limit how quickly AI-driven pricing changes can be deployed. Customer fairness testing must be ongoing, not point-in-time.</div>
+      <div class="industry-hardest">Hardest dimension: <span>Regulatory</span> — 50-state insurance regulation mosaic.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">🔬</div>
+      <div class="industry-name">Pharmaceutical &amp; Biotech</div>
+      <div class="industry-regs">FDA 21 CFR Part 11 · GxP · ICH E6 (GCP) · EU AI Act High-Risk</div>
+      <div class="industry-challenge">AI in clinical trials, drug discovery, and manufacturing quality control must satisfy Good Practice (GxP) validation requirements — which predate AI and were not designed for probabilistic systems. Computer System Validation (CSV) frameworks require extensive documentation, often at odds with iterative AI development cycles.</div>
+      <div class="industry-hardest">Hardest dimension: <span>Regulatory</span> — FDA validation rigor applied to non-deterministic systems.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What an ARTHA Engagement Looks Like</h2>
+  <p>A full diagnostic is a structured, time-boxed engagement — not an open-ended consulting retainer. Here is the standard process from kickoff to scorecard.</p>
+
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="tl-label">Week 1 — Days 1–3</div>
+      <div class="tl-title">Kickoff &amp; Pre-Work Package</div>
+      <div class="tl-desc">Sponsor briefing with C-suite. Document collection request issued (governance policies, data architecture docs, existing AI inventory, regulatory assessments). Assessment scheduling for department heads and key stakeholders across all five dimensions.</div>
+      <div class="tl-deliverable">Deliverable: Pre-work checklist + assessment schedule</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-label">Week 1–2 — Days 3–10</div>
+      <div class="tl-title">Structured Assessment &amp; Interviews</div>
+      <div class="tl-desc">60-question assessment completed by relevant roles for each dimension (not one person filling out the entire form — the right respondent per question). Qualitative interviews with department heads. Shadow AI audit via IT helpdesk data and browser plugin inventories where accessible.</div>
+      <div class="tl-deliverable">Deliverable: Raw scoring data + interview notes</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-label">Week 2 — Days 10–12</div>
+      <div class="tl-title">Analysis &amp; Red Flag Identification</div>
+      <div class="tl-desc">Scoring engine calculates dimension scores and composite ARTHA Score. Industry weights applied. Red flag screening (RF-001 through RF-004). Industry benchmark comparison against peer group. Draft gap analysis produced per below-threshold dimension.</div>
+      <div class="tl-deliverable">Deliverable: Internal analysis document</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-label">Week 3 — Days 14–16</div>
+      <div class="tl-title">Findings Presentation</div>
+      <div class="tl-desc">Executive readout: ARTHA Score + radar chart, dimension breakdown, red flags, industry benchmark comparison. Department-level findings by dimension. Priority gap map with impact vs. effort quadrant. Initial roadmap recommendations framed by budget cycle and regulatory deadlines.</div>
+      <div class="tl-deliverable">Deliverable: Executive presentation + 30-page diagnostic report</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-label">Week 4 — Days 18–21</div>
+      <div class="tl-title">ARTHA Roadmap Design</div>
+      <div class="tl-desc">36-month implementation roadmap sequenced in ARTHA order. Each initiative tied to a business outcome, regulatory deadline, or risk reduction target. Resource requirements estimated. Quick wins (0–90 days) identified for early momentum. Scoring retargets set for Q1 and Q4.</div>
+      <div class="tl-deliverable">Deliverable: ARTHA Roadmap + 90-day quick-win plan</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-label">Quarterly — Every 90 Days</div>
+      <div class="tl-title">ARTHA Scorecard &amp; Benchmark Update</div>
+      <div class="tl-desc">Re-measurement against baseline on key indicators per dimension. Progress tracking against roadmap milestones. Industry benchmark updated as peer group data refreshes. Executive scorecard issued. Roadmap re-sequenced if red flags resolved or new regulatory requirements surface.</div>
+      <div class="tl-deliverable">Deliverable: Quarterly ARTHA Scorecard</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Benchmark: Where Organizations Start</h2>
+  <p>Based on Trinity Bridge diagnostic data, here are the typical ARTHA scores at the start of an engagement — before any remediation work — across regulated industries.</p>
+  <table>
+    <thead><tr><th>Dimension</th><th>Healthcare avg</th><th>Financial Services avg</th><th>Insurance avg</th><th>Pharma avg</th><th>Target</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Adoption (A)</strong></td><td>38</td><td>42</td><td>35</td><td>44</td><td>≥ 70</td></tr>
+      <tr><td><strong>Regulatory (R)</strong></td><td>29</td><td>47</td><td>33</td><td>38</td><td>≥ 70</td></tr>
+      <tr><td><strong>Technology (T)</strong></td><td>52</td><td>58</td><td>48</td><td>55</td><td>≥ 70</td></tr>
+      <tr><td><strong>Holistic (H)</strong></td><td>31</td><td>45</td><td>36</td><td>33</td><td>≥ 70</td></tr>
+      <tr><td><strong>Accountability (A)</strong></td><td>24</td><td>39</td><td>28</td><td>27</td><td>≥ 70</td></tr>
+      <tr><td><strong style="color:var(--amber)">Composite ARTHA Score</strong></td><td><strong style="color:var(--amber)">35</strong></td><td><strong style="color:var(--amber)">46</strong></td><td><strong style="color:var(--amber)">36</strong></td><td><strong style="color:var(--amber)">39</strong></td><td><strong style="color:var(--green)">≥ 70</strong></td></tr>
+    </tbody>
+  </table>
+  <p><em>Organizations in the Aware range (26–50) have the clearest path to measurable value — enough AI activity to build on, enough gaps to yield high-impact quick wins.</em></p>
 </section>
 
 <section class="cta">
